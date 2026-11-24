@@ -1,0 +1,22 @@
+{
+  "validLogin": {
+    "username": "Admin",
+    "password": "admin123"
+  },
+  "invalidLogins": [
+    { "username": "wrongUser", "password": "wrongPass" },
+    { "username": "Admin", "password": "wrong123" },
+    { "username": "fakeAdmin", "password": "admin123" }
+  ],
+  "searchEmployee": {
+    "existing": "Paul",
+    "nonExisting": "Zzzxqwyy"
+  },
+  "newEmployee": {
+    "firstName": "Mariam",
+    "lastName": "Tester"
+  },
+  "addEmployeeNegative": [
+    { "firstName": "", "lastName": "Tester" }
+  ]
+}
