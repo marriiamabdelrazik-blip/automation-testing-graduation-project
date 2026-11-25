@@ -9,7 +9,6 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class DriverManager {
 
-    // كل Thread ليه نسخة WebDriver خاصة بيه
     private static final ThreadLocal<WebDriver> driver = new ThreadLocal<>();
 
     public static void initDriver() {
@@ -39,7 +38,7 @@ public class DriverManager {
     public static void quitDriver() {
         if (driver.get() != null) {
             driver.get().quit();
-            driver.remove(); // مهم: يمنع تسريب الذاكرة
+            driver.remove(); //
         }
     }
 }

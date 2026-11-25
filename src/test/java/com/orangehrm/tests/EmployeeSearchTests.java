@@ -16,9 +16,11 @@ public class EmployeeSearchTests extends BaseTest {
         PimPage pim = new PimPage();
         pim.openEmployeeList().searchEmployee(name);
 
-        String results = pim.getResultsText();
-        Assert.assertTrue(results.toLowerCase().contains(name.toLowerCase()),
-                "Results should contain employee: " + name);
+        String results = pim.getResultsText().toLowerCase();
+        for (String part : name.toLowerCase().trim().split("\\s+")) {
+            Assert.assertTrue(results.contains(part),
+                    "Results should contain '" + part + "' but results were: " + results);
+        }
     }
 
     @Test(description = "TC5: Search for a non-existing employee",

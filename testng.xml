@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="OrangeHRM Suite" parallel="tests" thread-count="3">
+
+    <test name="Login Tests">
+        <classes>
+            <class name="com.orangehrm.tests.LoginTests"/>
+        </classes>
+    </test>
+
+    <test name="Employee Tests">
+        <classes>
+            <class name="com.orangehrm.tests.EmployeeSearchTests"/>
+            <class name="com.orangehrm.tests.AddEmployeeTests"/>
+        </classes>
+    </test>
+
+    <test name="Admin and UI Tests">
+        <classes>
+            <class name="com.orangehrm.tests.AdminTests"/>
+            <class name="com.orangehrm.tests.UiTests"/>
+        </classes>
+    </test>
+
+</suite>

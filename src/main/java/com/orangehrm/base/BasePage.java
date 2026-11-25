@@ -6,7 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
+import org.openqa.selenium.JavascriptExecutor;
 import java.time.Duration;
 import java.util.List;
 
@@ -52,7 +52,21 @@ public class BasePage {
             return false;
         }
     }
+    protected void scrollToElement(By locator) {
+        WebElement element = waitForVisible(locator);
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+    }
 
+    protected void switchToNewTab() {
+        String original = driver.getWindowHandle();
+        wait.until(d -> d.getWindowHandles().size() > 1);
+        for (String handle : driver.getWindowHandles()) {
+            if (!handle.equals(original)) {
+                driver.switchTo().window(handle);
+                break;
+            }
+        }
+    }
     protected List<WebElement> findAll(By locator) {
         return driver.findElements(locator);
     }
@@ -63,5 +77,14 @@ public class BasePage {
 
     public String getCurrentUrl() {
         return driver.getCurrentUrl();
+    }
+    protected WebElement waitForPresence(By locator) {
+        return new WebDriverWait(driver, Duration.ofSeconds(15))
+                .until(ExpectedConditions.presenceOfElementLocated(locator));
+    }
+
+    protected void scrollIntoView(WebElement el) {
+        ((JavascriptExecutor) driver)
+                .executeScript("arguments[0].scrollIntoView({block:'center'});", el);
     }
 }

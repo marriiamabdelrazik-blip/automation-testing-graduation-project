@@ -8,9 +8,11 @@
     { "username": "Admin", "password": "wrong123" },
     { "username": "fakeAdmin", "password": "admin123" }
   ],
+
   "searchEmployee": {
-    "existing": "Paul",
+    "existing": "Joy Smith",
     "nonExisting": "Zzzxqwyy"
+
   },
   "newEmployee": {
     "firstName": "Mariam",

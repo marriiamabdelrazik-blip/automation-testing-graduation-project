@@ -9,7 +9,6 @@ import java.util.List;
 
 public class TestDataProvider {
 
-    // بيانات الدخول الصحيحة (TC1)
     @DataProvider(name = "validLoginData")
     public static Object[][] validLoginData() {
         JsonNode node = JsonReader.getData().get("validLogin");
@@ -18,7 +17,6 @@ public class TestDataProvider {
         };
     }
 
-    // بيانات دخول غلط (TC2) - كل صف في الـ array = تشغيل للتست
     @DataProvider(name = "invalidLoginData")
     public static Object[][] invalidLoginData() {
         JsonNode array = JsonReader.getData().get("invalidLogins");
@@ -32,21 +30,18 @@ public class TestDataProvider {
         return data.toArray(new Object[0][]);
     }
 
-    // موظف موجود (TC4)
     @DataProvider(name = "existingEmployee")
     public static Object[][] existingEmployee() {
         String name = JsonReader.getData().get("searchEmployee").get("existing").asText();
         return new Object[][]{{name}};
     }
 
-    // موظف غير موجود (TC5)
     @DataProvider(name = "nonExistingEmployee")
     public static Object[][] nonExistingEmployee() {
-        String name = JsonReader.getData().get("searchEmployee").get("nonExisting").asText();
+        String name = JsonReader.getData().get("searchEmployee").get("nonExisting").asText().trim();
         return new Object[][]{{name}};
     }
 
-    // موظف جديد (TC8)
     @DataProvider(name = "newEmployee")
     public static Object[][] newEmployee() {
         JsonNode node = JsonReader.getData().get("newEmployee");
@@ -55,7 +50,6 @@ public class TestDataProvider {
         };
     }
 
-    // إضافة موظف بحقل ناقص (TC7)
     @DataProvider(name = "addEmployeeNegative")
     public static Object[][] addEmployeeNegative() {
         JsonNode array = JsonReader.getData().get("addEmployeeNegative");
